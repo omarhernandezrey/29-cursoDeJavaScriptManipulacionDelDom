@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>DOM Traversing</title>
+</head>
+<body>
+
+  <!-- Elemento anterior al contenedor padre (para probar previousElementSibling) -->
+  <div id="anterior">Soy el hermano anterior</div>
+
+  <!-- Contenedor padre con varios hijos -->
+  <div id="parent">
+    <p>Hijo 1</p>
+    <p>Hijo 2</p>
+    <p>Hijo 3</p>
+  </div>
+
+  <!-- Elemento siguiente al contenedor padre (para probar nextElementSibling) -->
+  <div id="siguiente">Soy el hermano siguiente</div>
+
+  <!-- Menú con una lista -->
+  <menu>
+    <ul>
+      <li>Elemento 1</li>
+      <li>Elemento 2</li>
+      <li>Elemento 3</li>
+    </ul>
+  </menu>
+
+  <script>
+    // Obtenemos el elemento padre por su ID
+    const parent = document.getElementById("parent");
+    console.log(parent);
+
+    // Obtenemos sus hijos (HTMLCollection en vivo)
+    const children = parent.children;
+    console.log(children);
+
+    // Primer hijo tipo elemento
+    const firstChild = parent.firstElementChild;
+    console.log(firstChild);
+
+    // Último hijo tipo elemento
+    const lastChild = parent.lastElementChild;
+    console.log(lastChild);
+
+    // Hermano anterior al div con id="parent"
+    const previousSibling = parent.previousElementSibling;
+    console.log(previousSibling);
+
+    // Hermano siguiente al div con id="parent"
+    const nextSibling = parent.nextElementSibling;
+    console.log(nextSibling);
+
+    // ----------- Segunda parte ------------
+
+    // Seleccionamos el primer <li>
+    const children2 = document.querySelector("li");
+    console.log(children2);
+
+    // Obtenemos su padre directo (Node)
+    const parent2 = children2.parentNode;
+    console.log(parent2);
+
+    // Obtenemos su padre como elemento (Element)
+    const grandParent = children2.parentElement;
+    console.log(grandParent);
+
+    // Buscamos el antecesor más cercano que coincida con el selector "menu"
+    const grandGrandParent = children2.closest("menu");
+    console.log(grandGrandParent);
+  </script>
+
+</body>
+</html>
